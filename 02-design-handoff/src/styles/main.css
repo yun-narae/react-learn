@@ -1,0 +1,93 @@
+/* 스타일 초기화 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font: inherit;
+    font-size: 1em;
+    margin: 0;
+}
+  
+a {
+    color: inherit;
+    text-decoration: none;
+}
+  
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+    padding-inline-start: 0;
+    margin: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0,0,0,0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* 스타일 */
+body {
+    background: #1F1F1F;
+}
+
+article {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list_warpper {
+    width: 16rem;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    background: #19191a;
+    cursor: pointer;
+    border: .0625rem solid #323232;
+    transition: .3s;
+    &:hover {
+        background-color: #000000
+    };
+    @media (min-width: 48.75rem){
+        width: 26.25rem;
+    };
+}
+
+.list_item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    @media (min-width: 48.75rem){
+        gap: 1.5rem;
+        & img {
+            width: 90px;
+            height: 90px;
+        }
+    };
+}
+
+.tt {
+    color: white;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    overflow: hidden;
+    @media (min-width: 48.75rem){
+        font-size: 1.5rem;
+    };
+}
