@@ -73,7 +73,7 @@ const promise2 = () =>
     });
   });
 
-const promise3 = Promise.reject('❌ 오류 발생!');
+const promise3 = () => Promise.reject('❌ 오류 발생!');
 
 // Promise.all
 // 참고: https://mzl.la/49EvJxn
