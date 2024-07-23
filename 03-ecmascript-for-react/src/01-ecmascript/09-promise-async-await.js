@@ -14,7 +14,9 @@ function practice() {
         console.log('3s');
         delay(() => {
           console.log('4s');
-          console.log('end!');
+          delay(() => {
+            console.log('end!');
+          });
         });
       });
     });
@@ -32,14 +34,43 @@ function delay(callback, time = 1000) {
 // Promise
 // 참고: https://mzl.la/3d1He5h
 // 🔶 delayPromise 함수를 작성합니다.
-const delayPromise = () => {};
+const delayPromise = (timeout = 1000) => {
+  // Promise 클래스 → promise 인스턴스 생성
+  const promise = new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+    // setTimeout(() => resolve(), timeout);
+  });
+
+  // promise 인스턴스 반환
+  return promise;
+};
 
 function practice2() {
   console.log('start!');
   // 🔶 delayPromise 함수를 사용해 1초마다 로그를 남기도록 작성합니다.
+  delayPromise()
+    .then(() => {
+      console.log('1s');
+      return delayPromise(); // return promise
+    })
+    .then(() => {
+      console.log('2s');
+      return delayPromise(); // return promise
+    })
+    .then(() => {
+      console.log('3s');
+      return delayPromise(); // return promise
+    })
+    .then(() => {
+      console.log('4s');
+      return delayPromise(); // return promise
+    })
+    .then(() => {
+      console.log('end');
+    });
 }
 
-// practice2();
+practice2();
 
 // Async Await
 // 참고: https://mzl.la/49EvJxn
