@@ -2,6 +2,8 @@
 // ES5 Constructor (like. Class) with Module Pattern (IIFE)
 
 const _ApiClient = (function () {
+  // Class
+  // constructor function
   function ApiClient(endpoint) {
     this._endpoint = endpoint;
   }
@@ -39,8 +41,52 @@ const _ApiClient = (function () {
   return ApiClient;
 })();
 
+
+
+
+
+
 // 🔶 Class 구문을 사용해 ApiClient 클래스를 작성합니다.
 // 참고: https://mzl.la/3UdwrNE
+class ApiClient {
+  #endpoint;
+
+  constructor(endpoint){
+    this.#endpoint = endpoint;
+  }
+
+  readAll(page = 1, pageSize = 5){
+    return fetch(`${this.#endpoint}?_page=${page}&_limit=${pageSize}`).then(
+      (response) => response.json()
+    );
+  }
+
+  readOne(id){
+    return fetch(`${this.#endpoint}/${id}`).then((response) => response.json());
+  }
+
+  create(data){
+    return fetch(this.#endpoint, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+  }
+
+  update(id,data){
+    return fetch(`${this.#endpoint}/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+  }
+
+  delete(id){
+    return fetch(`${this.#endpoint}/${id}`, {
+      method: 'DELETE',
+    }).then((response) => response.json());
+  }
+}
+
+
 
 const todosService = new _ApiClient(
   'https://jsonplaceholder.typicode.com/todos'
